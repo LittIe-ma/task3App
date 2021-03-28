@@ -17,35 +17,30 @@ class ViewController: UIViewController {
     @IBOutlet private weak var label2: UILabel!
     @IBOutlet private weak var resultLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction func didTapButton(_ sender: Any) {
-        var number1 = Int(textField1.text!) ?? 0
-        var number2 = Int(textField2.text!) ?? 0
-        var result: Int
+        let number1 = Int(textField1.text!) ?? 0
+        let number2 = Int(textField2.text!) ?? 0
 
-        if invertSwitch1.isOn == true {
-            number1 *= -1
-            label1.text = String(number1)
+        let signedNumber1: Int
+        if invertSwitch1.isOn {
+            signedNumber1 = -number1
         }else{
-            number1 *= 1
-            label1.text = String(number1)
+            signedNumber1 = number1
         }
-
-        if invertSwitch2.isOn == true {
-            number2 *= -1
-            label2.text = String(number2)
-        }else{
-            number2 *= 1
-            label2.text = String(number2)
-        }
-
         label1.text = String(number1)
+
+        let signedNumber2: Int
+        if invertSwitch2.isOn {
+            signedNumber2 = -number1
+        }else{
+            signedNumber2 = number1
+        }
         label2.text = String(number2)
 
-        result = number1 + number2
+        label1.text = String(signedNumber1)
+        label2.text = String(signedNumber2)
+
+        let result = signedNumber1 + signedNumber2
 
         resultLabel.text = String(result)
     }
